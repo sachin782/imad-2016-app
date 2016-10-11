@@ -25,5 +25,5 @@ app.listen(8080, function () {
 });
 app.get('/counter',function(req,res){
     counter=counter+1;
-    res.send(counter.tostring())
+    res.send(counter.toString())
 })
