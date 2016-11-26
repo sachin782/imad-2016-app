@@ -10,10 +10,10 @@ app.use(morgan('combined'));
 
 var config = {
   host: 'db.imad.hasura-app.io',
-  user: 'rsbeoriginal',
+  user: 'sachin782',
   port: '5432',
-  password: 'db-rsbeoriginal-951',
-  database: 'rsbeoriginal',
+  password: 'db-sachin782-44514',
+  database: 'sachin782',
 };
 
 var pool = new Pool(config);
