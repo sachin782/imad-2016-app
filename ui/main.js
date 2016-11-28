@@ -4,12 +4,12 @@ function loadLoginForm() {
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Log in <span class="caret"></span>
                       </button>
-                      <ul class="dropdown-menu">
-                        <li><input id="txt_username" type="text" class="form-control" placeholder="Username "></li>
-                        <li><input id="txt_password" type="password" class="form-control" placeholder="Password" ></li>
-                        <li><button id="bt_login" class="btn btn-success"><strong>Sign in</strong></button></li>
+                      <ul class="dropdown-menu" style="padding:1%;">
+                        <li style="padding: inherit;" ><input id="txt_username" type="text" class="form-control" placeholder="Username "></li>
+                        <li style="padding: inherit;" ><input id="txt_password" type="password" class="form-control" placeholder="Password" ></li>
+                        <li style="padding: inherit;" align="right" ><button type="button" id="bt_login" class="btn btn-success" data-loading-text="Signing you in ..."><strong>Sign in</strong></button></li>
                         <li role="separator" class="divider"></li>
-                        <li><small>Don't have an account?</small><br>
+                        <li style="background-color:gold;" ><small>Don't have an account?</small><br>
                             <a href="/blog/sign-up">Sign up</a></li>
                       </ul>
         `;
@@ -18,6 +18,7 @@ function loadLoginForm() {
     // Submit username/password to login
     var submit = document.getElementById('bt_login');
     submit.onclick = function () {
+        var $btn = $(this).button('loading');
         // Create a request object
         var request = new XMLHttpRequest();
         
@@ -26,7 +27,7 @@ function loadLoginForm() {
           if (request.readyState === XMLHttpRequest.DONE) {
               // Take some action
               if (request.status === 200) {
-                  submit.value = 'Sucess!';
+                  submit.value = 'Success!';
               } else if (request.status === 403) {
                   submit.value = 'Invalid credentials. Try again?';
               } else if (request.status === 500) {
@@ -37,6 +38,7 @@ function loadLoginForm() {
                   submit.value = 'Login';
               }
               //loadLogin();
+              $btn.button('reset');
           }  
           // Not done yet
         
@@ -63,6 +65,7 @@ function loadLoggedInUser (username) {
                         <i>${username}</i> <span class="caret"></span>
                       </button>
                       <ul class="dropdown-menu">
+                        <li><a href="/blog/profile">Profile</a></li>
                         <li><a href="/logout">Logout</a></li>
                       </ul>
     `;
